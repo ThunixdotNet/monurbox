@@ -1,7 +1,7 @@
 #!/bin/bash
 export SITE=$1
 
-wget --quiet -O /dev/null http://$SITE
+timeout 2 bash -c "</dev/tcp/${SITE}/2222" > /dev/null
 if [ $? -ne "0" ]
 then 
  exit 1

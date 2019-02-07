@@ -2,6 +2,7 @@
 
 export DEBUG=1
 export serv=$1
+export FILE=/var/www/thunix.cf/report
 
 if [ ! -z $serv ]
 then
@@ -12,7 +13,7 @@ done
 
 else
 
-echo -e "\n" >/tmp/report
+echo -e "\n" >$FILE
 echo -e "Host\tService\tStatus"
 for i in `ls ./hosts/`
 	do for x in `cat ./hosts/$i`
@@ -20,14 +21,15 @@ for i in `ls ./hosts/`
 			./checks/$x $i > /dev/null
 				if [ "$?" -ne 0 ]; then
 					echo -e "$i\t$x\tFAILED"
-					echo "$i,$x,FAILED" >> /tmp/report
+					echo "$i,$x,FAILED" >> $FILE
 				else
 					echo -e "$i\t$x\tGOOD"
-					echo "$i,$x,GOOD" >> /tmp/report
+					echo "$i,$x,GOOD" >> $FILE 
 				fi
 	 done
 done
 
 fi | column -t
 
-sed -i '/^\s*$/d' /tmp/report
+sed -i '/^\s*$/d' $FILE
+sed -i '/^root//' $FILE

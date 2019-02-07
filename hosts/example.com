@@ -1,2 +1,0 @@
-telnet
-web_site
