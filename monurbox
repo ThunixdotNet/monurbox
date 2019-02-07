@@ -32,4 +32,4 @@ done
 fi | column -t
 
 sed -i '/^\s*$/d' $FILE
-sed -i '/^root//' $FILE
+sed -i 's/^root@//' $FILE
