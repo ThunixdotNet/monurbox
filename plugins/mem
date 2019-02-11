@@ -2,7 +2,7 @@
 
 export SITE=$1
 
-ALERT=70
+ALERT=20
 
 awk '/MemFree/{free=$2} /MemTotal/{total=$2} END{print (free*100)/total}' /proc/meminfo | awk '{printf("%d\n",$1 + 0.5)}' | while read freemem; do
 	if [ "$freemem" -lt "$ALERT" ]
