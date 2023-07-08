@@ -2,7 +2,7 @@
 
 export DEBUG=1
 export serv=$1
-export FILE=/var/www/thunix.cf/includes/report
+export FILE=/var/www/thunix.cf/report
 
 if [ ! -z $serv ]
 then
