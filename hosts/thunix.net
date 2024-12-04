@@ -4,6 +4,8 @@ Minetest_Server
 Minecraft_Server
 web_site
 web_site_https
+gopher
+gemini
 imap
 smtp
 znc
